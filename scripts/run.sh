@@ -1,8 +1,10 @@
 #!/bin/bash
-NUMCPU=$(grep -c ^processor /proc/cpuinfo)
-NUMTHREADS=$(python -c "from math import floor; print int(floor($NUMCPU*.60))")
+if [ "$#" -ne 1 ]; then
+  echo "usage: ./run.sh NUMBER_OF_THREADS"
+  exit 1
+fi
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR"
 echo "Detected $NUMCPU cores running with $NUMTHREADS threads"
-exec ./xmrig -t "$NUMTHREADS" -o stratum+tcp://xdn-xmr.pool.minergate.com:45560 -u rpklafter@yahoo.com -p x
+exec ../build/xmrig -t "$1" -o stratum+tcp://xdn-xmr.pool.minergate.com:45560 -u rpklafter@yahoo.com -p x
 
