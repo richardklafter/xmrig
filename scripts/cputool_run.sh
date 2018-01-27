@@ -1,4 +1,6 @@
 #!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$DIR"
 echo "Sleeping 60s to collect current load average..."
 sleep 61
 CURRENT_LOAD_AVG=$(cat /proc/loadavg | awk '{print $1}') #load avg of last 1 min
