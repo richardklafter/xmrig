@@ -5,6 +5,5 @@ if [ "$#" -ne 1 ]; then
 fi
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR"
-echo "Detected $NUMCPU cores running with $NUMTHREADS threads"
 exec ../build/xmrig -t "$1" -o stratum+tcp://xdn-xmr.pool.minergate.com:45790 -u rpklafter@yahoo.com -p x
 
