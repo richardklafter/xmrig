@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Sleeping 60s to collect current load average..."
 sleep 61
-CURRENT_LOAD_AVG=$(cat /proc/loadavg | awk '{print $1}') #load avg of last 10 mins
+CURRENT_LOAD_AVG=$(cat /proc/loadavg | awk '{print $1}') #load avg of last 1 min
 NUMBER_CPUS=$(grep -c ^processor /proc/cpuinfo)
 NUMBER_OF_THREADS=$(python -c "from math import floor; print(int(floor($NUMBER_CPUS-$CURRENT_LOAD_AVG-1)))")
 LOAD_LIMIT=$(python -c "print($NUMBER_CPUS-1.0)")
